@@ -219,7 +219,7 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ## 👥 Authors
 
-- **Your Name** - *Initial work* - [GitHub Profile](https://github.com/yourusername)
+- **Sage** - *Initial work* - [GitHub Profile](https://github.com/ssmaddux)
 
 ## 🙏 Acknowledgments
 
