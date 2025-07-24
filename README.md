@@ -16,9 +16,9 @@ An AI-powered Lightning Web Component that automatically generates concise summa
 
 **See the Document Summarizer in action!**
 
-https://github.com/ssmaddux/Salesforce-document-summarizer/assets/demos/DocumentSummarizer.mov
+![Document Summarizer Demo](demos/DocumentSummarizer.gif)
 
-*Watch the complete workflow from file upload to AI-generated summary in under a minute.*
+*Watch the complete workflow from file upload to AI-generated summary in under 30 seconds.*
 
 ### What the Demo Shows:
 - 📁 File upload with drag & drop interface
@@ -27,7 +27,7 @@ https://github.com/ssmaddux/Salesforce-document-summarizer/assets/demos/Document
 - 📋 Copy-to-clipboard functionality
 - ✅ Complete user workflow
 
-> **Note**: Click "View raw" or download the video if it doesn't play directly in your browser.
+> **💡 Tip**: The GIF loops automatically to show the full process. [Download the original video](demos/DocumentSummarizer.mov) for higher quality.
 
 ## 📋 Prerequisites
 
@@ -81,7 +81,8 @@ force-app/main/default/
         ├── fileSummarizer.css                # Styling
         └── fileSummarizer.js-meta.xml        # Component metadata
 demos/
-└── DocumentSummarizer.mov                    # Video demonstration
+├── DocumentSummarizer.gif                    # Auto-playing demo (README)
+└── DocumentSummarizer.mov                    # Original high-quality video
 ```
 
 ## 🎯 Usage
