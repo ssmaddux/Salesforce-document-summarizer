@@ -1,0 +1,119 @@
+<template>
+    <lightning-card title="Document Summarizer" icon-name="standard:document">
+        <div class="slds-p-horizontal_small">
+            
+            <!-- File Upload Section -->
+            <div class="slds-section slds-is-open">
+                <h3 class="slds-section__title slds-theme_shade">
+                    <span class="slds-truncate slds-p-horizontal_small" title="Upload Document">Upload Document</span>
+                </h3>
+                <div class="slds-section__content slds-p-around_medium">
+                    <p class="slds-text-body_regular slds-m-bottom_small">
+                        Upload a plain text document to generate an AI-powered summary.
+                    </p>
+                    
+                    <!-- Supported file types info -->
+                    <div class="slds-notify slds-notify_toast slds-theme_info slds-m-bottom_medium" role="status">
+                        <span class="slds-assistive-text">Info</span>
+                        <div class="slds-notify__content">
+                            <h2 class="slds-text-heading_small">📄 Best Results: Plain Text (.txt) files</h2>
+                            <p class="slds-text-body_small slds-m-top_x-small">
+                                For Word/PDF documents: Save as Plain Text (.txt) or copy/paste content into a text file
+                            </p>
+                        </div>
+                    </div>
+                    
+                    <!-- File Upload Component -->
+                    <lightning-file-upload
+                        label="Choose Text File to Summarize"
+                        name="fileUploader"
+                        accept=".txt,.rtf"
+                        record-id={currentRecordId}
+                        onuploadfinished={handleUploadFinished}
+                        multiple="false">
+                    </lightning-file-upload>
+                    
+                    <!-- Additional guidance -->
+                    <div class="slds-m-top_small">
+                        <p class="slds-text-body_small slds-text-color_weak">
+                            💡 <strong>Tip:</strong> For best results with Word/PDF files:
+                        </p>
+                        <ul class="slds-list_dotted slds-text-body_small slds-text-color_weak slds-m-left_medium">
+                            <li>Open your document in Word/PDF reader</li>
+                            <li>Select all text (Ctrl+A / Cmd+A)</li>
+                            <li>Copy and paste into a new .txt file</li>
+                            <li>Upload the .txt file here</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Processing Indicator -->
+            <template if:true={isProcessing}>
+                <div class="slds-section slds-m-top_medium">
+                    <div class="slds-align_absolute-center slds-p-around_medium">
+                        <lightning-spinner alternative-text="Processing document..." size="medium"></lightning-spinner>
+                        <p class="slds-text-heading_small slds-m-top_small">Analyzing document and generating summary...</p>
+                    </div>
+                </div>
+            </template>
+
+            <!-- Error Message -->
+            <template if:true={hasError}>
+                <div class="slds-section slds-m-top_medium">
+                    <div class="slds-notify slds-notify_alert slds-theme_error" role="alert">
+                        <span class="slds-assistive-text">Error</span>
+                        <div class="slds-notify__content">
+                            <h2 class="slds-text-heading_small">{errorMessage}</h2>
+                        </div>
+                    </div>
+                </div>
+            </template>
+
+            <!-- Summary Results Section -->
+            <template if:true={hasSummary}>
+                <div class="slds-section slds-is-open slds-m-top_medium">
+                    <h3 class="slds-section__title slds-theme_shade">
+                        <span class="slds-truncate slds-p-horizontal_small" title="Document Summary">Document Summary</span>
+                    </h3>
+                    <div class="slds-section__content slds-p-around_medium">
+                        
+                        <!-- File Info -->
+                        <div class="slds-media slds-media_center slds-m-bottom_medium">
+                            <div class="slds-media__figure">
+                                <lightning-icon icon-name="standard:file" size="small"></lightning-icon>
+                            </div>
+                            <div class="slds-media__body">
+                                <h4 class="slds-text-heading_small">{uploadedFileName}</h4>
+                                <p class="slds-text-body_small slds-text-color_weak">Processed on {summaryDate}</p>
+                            </div>
+                        </div>
+
+                        <!-- Summary Content -->
+                        <div class="summary-container">
+                            <div class="slds-box slds-theme_shade slds-m-bottom_medium">
+                                <h4 class="slds-text-heading_small slds-m-bottom_small">AI-Generated Summary:</h4>
+                                <div class="summary-content">
+                                    <lightning-formatted-text value={summaryText}></lightning-formatted-text>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Action Buttons -->
+                        <div class="slds-button-group" role="group">
+                            <button class="slds-button slds-button_neutral" onclick={handleClearResults}>
+                                <lightning-icon icon-name="utility:refresh" size="x-small" class="slds-m-right_x-small"></lightning-icon>
+                                Clear & Upload New File
+                            </button>
+                            <button class="slds-button slds-button_brand" onclick={handleCopySummary}>
+                                <lightning-icon icon-name="utility:copy" size="x-small" class="slds-m-right_x-small"></lightning-icon>
+                                Copy Summary
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </template>
+
+        </div>
+    </lightning-card>
+</template> 
