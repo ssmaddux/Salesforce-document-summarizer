@@ -12,6 +12,23 @@ An AI-powered Lightning Web Component that automatically generates concise summa
 - **Copy to Clipboard**: One-click copying of generated summaries
 - **File Type Validation**: Optimized for plain text files with clear user guidance
 
+## 🎬 Demo Video
+
+**See the Document Summarizer in action!**
+
+https://github.com/ssmaddux/Salesforce-document-summarizer/assets/demos/DocumentSummarizer.mov
+
+*Watch the complete workflow from file upload to AI-generated summary in under a minute.*
+
+### What the Demo Shows:
+- 📁 File upload with drag & drop interface
+- ⏳ Real-time processing indicators
+- 🤖 AI summary generation
+- 📋 Copy-to-clipboard functionality
+- ✅ Complete user workflow
+
+> **Note**: Click "View raw" or download the video if it doesn't play directly in your browser.
+
 ## 📋 Prerequisites
 
 - Salesforce org with Lightning Experience enabled
@@ -63,6 +80,8 @@ force-app/main/default/
         ├── fileSummarizer.js                 # JavaScript controller
         ├── fileSummarizer.css                # Styling
         └── fileSummarizer.js-meta.xml        # Component metadata
+demos/
+└── DocumentSummarizer.mov                    # Video demonstration
 ```
 
 ## 🎯 Usage
